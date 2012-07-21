@@ -48,7 +48,6 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        Notifier.ticket_created(@ticket).deliver
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
         format.json { render json: @ticket, status: :created, location: @ticket }
       else
@@ -62,9 +61,11 @@ class TicketsController < ApplicationController
   # PUT /tickets/1.json
   def update
     @ticket = Ticket.find(params[:id])
-
+    @ticket.current_user = current_user 
+    
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
+        
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { head :no_content }
       else
