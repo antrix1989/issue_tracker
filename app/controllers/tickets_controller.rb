@@ -14,6 +14,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     @ticket = Ticket.find(params[:id])
+    @comment = Comment.new( :ticket => @ticket )
 
     respond_to do |format|
       format.html # show.html.erb

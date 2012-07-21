@@ -1,4 +1,6 @@
 IssueTraker::Application.routes.draw do
+  resources :comments
+
   resources :tickets
 
   # The priority is based upon order of creation:
