@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
-    @comment.name = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : @comment.ticket.customer_name
+    @comment.name = user_signed_in? ? current_user.full_name : @comment.ticket.customer_name
 
     respond_to do |format|
       if @comment.save

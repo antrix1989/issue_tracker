@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @comment = Comment.new( :ticket => @ticket )
     @ticket_statuses = TicketStatus.all
+    @users = User.all
 
     respond_to do |format|
       format.html # show.html.erb

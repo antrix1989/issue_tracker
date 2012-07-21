@@ -6,6 +6,7 @@ class Ticket < ActiveRecord::Base
   after_save :assign_reference
   
   belongs_to :status, :class_name => 'TicketStatus', :foreign_key => 'status_id'
+  belongs_to :user, :foreign_key => "assigned_to_id"
   has_many :comments, :dependent => :destroy
   
   private
