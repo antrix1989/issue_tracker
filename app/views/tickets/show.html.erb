@@ -40,7 +40,15 @@
 <%= link_to 'Back', tickets_path %>
 
 <%= render :partial => 'comment', :collection => @ticket.comments %> 
+
 <hr />
+<%= form_for(@ticket) do |f| %>
+  <%= f.label :status_id, "Status:" %>&nbsp;
+  <%= collection_select(:ticket, :status_id, @ticket_statuses, :id, :name) %>
+  
+  <%= f.submit "Update" %>
+<% end %>
+
 <%= form_for @comment do|f| %>
   <%= f.hidden_field :ticket_id %>
  
