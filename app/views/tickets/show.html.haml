@@ -46,7 +46,7 @@
 
 %hr
 
-= form_for(@ticket) do |f|
+= form_for @ticket, :remote => true do |f|
   - if user_signed_in?
     .splitcontentleft
       = f.label :status_id, "Status:"

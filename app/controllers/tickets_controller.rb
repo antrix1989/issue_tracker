@@ -68,6 +68,7 @@ class TicketsController < ApplicationController
       if @ticket.update_attributes(params[:ticket])
         
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.js
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
