@@ -20,6 +20,10 @@
   <% if user_signed_in? %>
     <div id="side">
       <%= link_to 'All tickets', tickets_path %> <br />
+      <%= link_to 'New unassigned tickets', tickets_path(:scope => "unassigned") %> <br />
+      <%= link_to 'Open tickets', tickets_path(:scope => "open") %> <br />
+      <%= link_to 'On hold tickets', tickets_path(:scope => "on_hold") %> <br />
+      <%= link_to 'Closed tickets', tickets_path(:scope => "closed") %> <br />
     </div>
   <% end %>
 

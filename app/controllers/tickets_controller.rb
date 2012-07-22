@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = params[:scope].nil? ? Ticket.all : Ticket.send(params[:scope])
 
     respond_to do |format|
       format.html # index.html.erb

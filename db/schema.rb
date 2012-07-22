@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721173831) do
+ActiveRecord::Schema.define(:version => 20120722094115) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20120721173831) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "is_default", :default => false, :null => false
+    t.boolean  "is_closed",  :default => false, :null => false
+    t.boolean  "is_on_hold", :default => false, :null => false
   end
 
   create_table "tickets", :force => true do |t|
