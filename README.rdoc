@@ -1,30 +1,30 @@
 == Getting Started
 
-1. Open project's dir.
+Open project's dir:
   cd <project_dir>
 
-2. Create database.yml file. You can use sqlite3 db (left database.yml as it is) or change mysql settings.
+Create database.yml file. You can use sqlite3 db (left database.yml as it is) or change mysql settings:
   cp config/database.example.yml config/database.yml
 
-3. Create development.rb file. Left it as it is. I've created mail accout and use it as smtp server (Username: sservice305@gmail.com Password: kuijt93;39)
+Create development.rb file. Left it as it is. I've created mail accout and use it as smtp server (Username: sservice305@gmail.com Password: kuijt93;39):
   cp config/environments/development.example.rb config/environments/development.rb
 
-4. Run migrations.
+Run migrations:
   rake db:migrate
   rake db:seed
 
-5. Start server:
+Start server:
   rails s
 
-6. Open the following link: http://0.0.0.0:3000/admin/login
+Open the following link: http://0.0.0.0:3000/admin/login
   * Username: admin@example.com
   * Password: password
 
-7. Open user's tab (http://0.0.0.0:3000/admin/users)
+Open user's tab (http://0.0.0.0:3000/admin/users)
 
-8. Create as many staff users as you want.
+Create as many staff users as you want.
 
-9. Now you can login into app as a staff user.
+Now you can login into app as a staff user.
 
 Notes:
  * You can add new statuses of the ticket, see here: http://0.0.0.0:3000/admin/ticket_statuses
