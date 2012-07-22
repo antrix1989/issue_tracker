@@ -10,7 +10,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user, :foreign_key => "assigned_to_id"
   has_many :comments, :dependent => :destroy
   
-  scope :unassigned, :conditions => { :assigned_to_id => nil }
+  scope :unassigned, :conditions => ["#{TicketStatus.table_name}.is_closed = ? AND assigned_to_id IS NULL", false], :include => :status
   scope :open, :conditions => ["#{TicketStatus.table_name}.is_closed = ?", false], :include => :status
   scope :on_hold, :conditions => ["#{TicketStatus.table_name}.is_on_hold = ?", true], :include => :status
   scope :closed, :conditions => ["#{TicketStatus.table_name}.is_closed = ?", true], :include => :status
