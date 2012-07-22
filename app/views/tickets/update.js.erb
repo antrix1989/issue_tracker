@@ -1,2 +1,4 @@
 $('.comments_block').html("<%= escape_javascript(render :partial => 'comment', :collection => @ticket.comments) %>");
+$('#assigne_id').html("<%= escape_javascript(render "assignee") %>");
+$('#status_id').html("<%= escape_javascript(render "status") %>");
 $('#ticket_comments_attributes_0_body').val('')

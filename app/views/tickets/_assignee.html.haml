@@ -1,0 +1,6 @@
+%p#assigne_id
+  %b Assigned to:  
+  - if @ticket.user.nil?
+    &#8211;
+  - else
+    = @ticket.user.full_name

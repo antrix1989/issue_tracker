@@ -8,9 +8,7 @@
   %b Body:
   = @ticket.body
 
-%p
-  %b Status:
-  = @ticket.status.name
+= render "status"
 
 %p
   %b Reference:
@@ -24,12 +22,7 @@
   %b Customer email
   = @ticket.customer_email
 
-%p
-  %b Assigned to:  
-  - if @ticket.user.nil?
-    &#8211;
-  - else
-    = @ticket.user.full_name
+= render "assignee"
 
 
 = link_to 'Edit', edit_ticket_path(@ticket)
