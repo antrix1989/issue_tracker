@@ -25,9 +25,7 @@
   = @ticket.customer_email
 
 %p
-  %b Assigned to:
-  = @ticket.assigned_to_id
-  
+  %b Assigned to:  
   - if @ticket.user.nil?
     &#8211;
   - else

@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Ticket.delete_all
+TicketStatus.delete_all
+Comment.delete_all
+TicketStatus.create(:name => "Waiting for Staff Response", :is_default => true)
+TicketStatus.create(:name => "Waiting for Customer")
+TicketStatus.create(:name => "On Hold", :is_on_hold => true)
+TicketStatus.create(:name => "Cancelled", :is_closed => true)
+TicketStatus.create(:name => "Completed", :is_closed => true)
+
