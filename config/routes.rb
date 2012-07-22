@@ -1,4 +1,6 @@
 IssueTraker::Application.routes.draw do
+  resources :products
+
   get "search/index"
 
   ActiveAdmin.routes(self)

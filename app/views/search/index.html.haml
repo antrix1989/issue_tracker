@@ -1,0 +1,26 @@
+%h1 Listing tickets
+
+%table
+  %tr
+    %th Subject
+    %th Status
+    %th Reference
+    %th Customer name
+    %th Customer email
+    %th Assigned to
+    %th
+
+  - @tickets.each do |ticket|
+    %tr
+      %td= ticket.subject
+      %td= ticket.status.name
+      %td= ticket.reference
+      %td= ticket.customer_name
+      %td= ticket.customer_email
+      - if ticket.user.nil?
+        %td
+      - else
+        %td= ticket.user.full_name
+      %td= link_to 'Show', ticket
+
+%br
