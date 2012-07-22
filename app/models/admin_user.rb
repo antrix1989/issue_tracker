@@ -8,4 +8,13 @@ class AdminUser < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+  
+  after_destroy :ensure_an_admin_remains
+  
+  def ensure_an_admin_remains
+    if AdminUser.count.zero?
+      raise "Can't delete last admin user."
+    end
+  end
+  
 end
