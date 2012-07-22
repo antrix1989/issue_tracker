@@ -18,6 +18,10 @@ class Ticket < ActiveRecord::Base
     @current_user
   end
   
+  def self.search(search_condition)
+    find(:all, :conditions => ['subject LIKE ?', "%#{search_condition}%"])
+  end
+  
   private
   def assign_reference
     self.update_column(:reference, "UKR-%06d" % self.id)

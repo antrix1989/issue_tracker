@@ -11,9 +11,19 @@
     <ul class="hmenu">
       <%= render 'devise/menu/login_items' %>
     </ul>
+    
+    <div id="search">
+      <%= render :partial => 'search/search_form' %>
+    </div>
   </div>
+  
+  <% if user_signed_in? %>
+    <div id="side">
+      <%= link_to 'All tickets', tickets_path %> <br />
+    </div>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
