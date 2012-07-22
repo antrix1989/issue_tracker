@@ -61,7 +61,9 @@ class TicketsController < ApplicationController
   # PUT /tickets/1.json
   def update
     @ticket = Ticket.find(params[:id])
-    @ticket.current_user = current_user 
+    @ticket.current_user = current_user
+    
+    #@ticket.comments.new(params[:comment]) 
     
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])

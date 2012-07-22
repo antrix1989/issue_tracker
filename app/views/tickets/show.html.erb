@@ -50,19 +50,15 @@
   <%= f.label :assigned_to_id, "Assignee:" %>&nbsp;
   <%= collection_select(:ticket, :assigned_to_id, @users, :id, :full_name, {:include_blank => true}) %>
   <br />
+   
+  <%= f.fields_for :comments, @ticket.comments.build do |comment| %>
+    <p>
+      <%= comment.label :body %><br />
+      <%= comment.text_area :body %>
+      
+      <%= comment.hidden_field :name, :value => comment_name %>
+    </p>
+  <% end %>
   
   <%= f.submit "Update" %>
-<% end %>
-
-<%= form_for @comment do|f| %>
-  <%= f.hidden_field :ticket_id %>
- 
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
- 
-  <p>
-    <%= f.submit "Post Comment" %>
-  </p>
 <% end %>

@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  attr_accessible :assigned_to_id, :body, :customer_email, :customer_name, :reference, :status_id, :subject
+  attr_accessible :assigned_to_id, :body, :customer_email, :customer_name, :reference, :status_id, :subject, :comments_attributes
   
   validates :customer_name, :customer_email, :subject, :body, :presence => true
   
@@ -14,6 +14,8 @@ class Ticket < ActiveRecord::Base
   scope :open, :conditions => ["#{TicketStatus.table_name}.is_closed = ?", false], :include => :status
   scope :on_hold, :conditions => ["#{TicketStatus.table_name}.is_on_hold = ?", true], :include => :status
   scope :closed, :conditions => ["#{TicketStatus.table_name}.is_closed = ?", true], :include => :status
+  
+  accepts_nested_attributes_for :comments, :reject_if => lambda { |comment| comment[:body].blank? }
   
   def current_user=(current_user)
     @current_user = current_user
