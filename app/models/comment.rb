@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
       return
     end
     
-    Notifier.ticket_updated(self).deliver
+    Thread.new { Notifier.ticket_updated(self).deliver }
   end
   
 end

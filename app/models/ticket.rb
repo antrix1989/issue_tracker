@@ -27,7 +27,7 @@ class Ticket < ActiveRecord::Base
   end
   
   def send_mail
-    Notifier.ticket_created(self).deliver
+    Thread.new { Notifier.ticket_created(self).deliver }
   end
   
   def save_comment
