@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.name = user_signed_in? ? current_user.full_name : @comment.ticket.customer_name
+    @comment.current_user = current_user
 
     respond_to do |format|
       if @comment.save

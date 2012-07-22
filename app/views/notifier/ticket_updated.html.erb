@@ -1,0 +1,12 @@
+<h2>Hello, <%= "#{@comment.ticket.customer_name}!" %></h2>
+
+<p>Your ticket with reference <%= "#{@comment.ticket.reference}" %> is updated.</p>
+
+<p>You can see changes by the following url: <%= ticket_url @comment.ticket %></p>
+
+<div class="comment">
+  <i><%=h @comment.name %> says:</i><br />
+  <%= simple_format h(@comment.body) %>
+</div>
+
+<p>Best Regards,<br/>Support Service</p>

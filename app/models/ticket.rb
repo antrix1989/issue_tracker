@@ -51,6 +51,7 @@ class Ticket < ActiveRecord::Base
       @comment.name = self.current_user.full_name
       @comment.body = body.join(". ")
       @comment.ticket = self
+      @comment.current_user = self.current_user
       @comment.save
     end
   end
