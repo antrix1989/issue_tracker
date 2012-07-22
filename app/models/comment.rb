@@ -1,22 +1,14 @@
 class Comment < ActiveRecord::Base
   belongs_to :ticket
-  attr_accessible :body, :name, :ticket, :ticket_id
+  attr_accessible :body, :name, :ticket, :ticket_id, :current_user
   
   validates_presence_of :name, :body, :ticket_id
   
   after_create :send_mail
   
-  def current_user=(current_user)
-    @current_user = current_user
-  end
-  
-  def current_user
-    @current_user
-  end
-  
   private
   def send_mail
-    if self.current_user.nil?
+    if User.current.nil?
       return
     end
     

@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Subject</th>
-    <th>Body</th>
     <th>Status</th>
     <th>Reference</th>
     <th>Customer name</th>
@@ -15,12 +14,15 @@
 <% @tickets.each do |ticket| %>
   <tr>
     <td><%= ticket.subject %></td>
-    <td><%= ticket.body %></td>
-    <td><%= ticket.status_id %></td>
+    <td><%= ticket.status.name %></td>
     <td><%= ticket.reference %></td>
     <td><%= ticket.customer_name %></td>
     <td><%= ticket.customer_email %></td>
-    <td><%= ticket.assigned_to_id %></td>
+    <% if ticket.user.nil?%>
+      <td></td>
+    <% else %>
+      <td><%= ticket.user.full_name %></td>
+    <% end %>
     <td><%= link_to 'Show', ticket %></td>
   </tr>
 <% end %>

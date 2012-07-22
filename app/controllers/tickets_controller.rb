@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:index, :edit]
+  
   # GET /tickets
   # GET /tickets.json
   def index
@@ -61,9 +63,6 @@ class TicketsController < ApplicationController
   # PUT /tickets/1.json
   def update
     @ticket = Ticket.find(params[:id])
-    @ticket.current_user = current_user
-    
-    #@ticket.comments.new(params[:comment]) 
     
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
@@ -74,18 +73,6 @@ class TicketsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /tickets/1
-  # DELETE /tickets/1.json
-  def destroy
-    @ticket = Ticket.find(params[:id])
-    @ticket.destroy
-
-    respond_to do |format|
-      format.html { redirect_to tickets_url }
-      format.json { head :no_content }
     end
   end
 end

@@ -12,7 +12,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @ticket.status_id %>
+  <%= @ticket.status.name %>
 </p>
 
 <p>
@@ -33,28 +33,42 @@
 <p>
   <b>Assigned to:</b>
   <%= @ticket.assigned_to_id %>
+  
+  <% if @ticket.user.nil?%>
+    &#8211;
+  <% else %>
+    <%= @ticket.user.full_name %>
+  <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
 
-<%= render :partial => 'comment', :collection => @ticket.comments %> 
+<hr />
+
+<div class="comments_block">
+  <h3>Comments</h3>
+  <%= render :partial => 'comment', :collection => @ticket.comments %>
+</div> 
 
 <hr />
 <%= form_for(@ticket) do |f| %>
-  <%= f.label :status_id, "Status:" %>&nbsp;
-  <%= collection_select(:ticket, :status_id, @ticket_statuses, :id, :name) %>
-  <br />
+  <div class="splitcontentleft">
+    <%= f.label :status_id, "Status:" %>&nbsp;
+    <%= collection_select(:ticket, :status_id, @ticket_statuses, :id, :name) %>
+  </div>
   
-  <%= f.label :assigned_to_id, "Assignee:" %>&nbsp;
-  <%= collection_select(:ticket, :assigned_to_id, @users, :id, :full_name, {:include_blank => true}) %>
+  <div class="splitcontentright">
+    <%= f.label :assigned_to_id, "Assignee:" %>&nbsp;
+    <%= collection_select(:ticket, :assigned_to_id, @users, :id, :full_name, {:include_blank => true}) %>
+  </div>
   <br />
    
   <%= f.fields_for :comments, @ticket.comments.build do |comment| %>
     <p>
       <%= comment.label :body %><br />
-      <%= comment.text_area :body %>
+      <%= comment.text_area :body, :cols => "70", :rows => "10" %>
       
       <%= comment.hidden_field :name, :value => comment_name %>
     </p>

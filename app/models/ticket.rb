@@ -17,14 +17,6 @@ class Ticket < ActiveRecord::Base
   
   accepts_nested_attributes_for :comments, :reject_if => lambda { |comment| comment[:body].blank? }
   
-  def current_user=(current_user)
-    @current_user = current_user
-  end
-  
-  def current_user
-    @current_user
-  end
-  
   def self.search(search_condition)
     find(:all, :conditions => ['subject LIKE ?', "%#{search_condition}%"])
   end
@@ -39,7 +31,7 @@ class Ticket < ActiveRecord::Base
   end
   
   def save_comment
-    if self.current_user.nil?
+    if User.current.nil?
       return
     end
     
@@ -59,10 +51,9 @@ class Ticket < ActiveRecord::Base
       end
       
       @comment = Comment.new
-      @comment.name = self.current_user.full_name
+      @comment.name = User.current.full_name
       @comment.body = body.join(". ")
       @comment.ticket = self
-      @comment.current_user = self.current_user
       @comment.save
     end
   end

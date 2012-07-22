@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+  
+  def self.current=(user)
+    @current_user = user
+  end
+
+  def self.current
+    @current_user
+  end
 end
