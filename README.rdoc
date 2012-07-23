@@ -1,3 +1,22 @@
+== Description
+
+Notes about the customer interface
+- Customers do not need to login to submit a query – they simply will need to provide their name and email address along with the department the issue relates to, the subject of their enquiry and the full body of the request.
+- Each new ticket is assigned a unique reference in the format similar to ABC-123456. - When a new ticket is added, the customer should receive an email confirming their request has been received along with their unique reference. 
+- It should also include a URL which can be used to view the ticketʼs history and update tickets.
+
+Notes about the management interface
+- Each member of staff should have a username & password  used to login to the system - Staff can view a list of all unassigned, open tickets and take ownership. - Staff should be able to reply to the ticket by simply entering their response into a text field. As part of the same action, they should also be able to change the owner or status. - All changes to the status and owner should be tracked with each staff reply. - All replies should be e-mailed to the client.
+- Each ticket should be assigned a status - ʻWaiting for Staff Responseʼ, ʻWaiting for Customerʼ, ʻOn Holdʼ, ʻCancelledʼ or ʻCompletedʼ - further status may wish to be added in the future.
+- When a ticket is first created or updated by the customer, it should be assigned the ʻWaiting for Staff Responseʼ status.
+- The interface should have four main views: 
+   - New unassigned tickets
+   - Open Tickets 
+   - On hold tickets 
+   - Closed Tickets
+- Staff should be able to quickly open up a new ticket by entering itʼs reference number into a search field. They may also wish to search based on the ticket subject.
+
+
 == Getting Started
 
 Open project's dir:
