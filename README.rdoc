@@ -9,12 +9,15 @@ Create database.yml file. You can use sqlite3 db (leave database.yml as it is) o
 Create development.rb file. I've created gmail accout and use it as smtp server. You should provide other smtp settings.
   cp config/environments/development.example.rb config/environments/development.rb
 
-Run migrations:
-  rake db:migrate
-  rake db:seed
+Install bundler gem
+  gem install bundler
 
 Install gems:
   bundle install
+
+Run migrations:
+  rake db:migrate
+  rake db:seed
 
 Start server:
   rails s
