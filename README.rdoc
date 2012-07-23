@@ -13,6 +13,9 @@ Run migrations:
   rake db:migrate
   rake db:seed
 
+Install gems:
+  bundle install
+
 Start server:
   rails s
 
