@@ -22,8 +22,8 @@ IssueTraker::Application.configure do
     :port => 587,
     :domain => "domain.of.sender.net",
     :authentication => "plain",
-    :user_name => "sservice305",
-    :password => "kuijt93;39",
+    :user_name => "username",
+    :password => "password",
     :enable_starttls_auto => true
   }
 
