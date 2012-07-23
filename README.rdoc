@@ -3,10 +3,10 @@
 Open project's dir:
   cd <project_dir>
 
-Create database.yml file. You can use sqlite3 db (left database.yml as it is) or change mysql settings:
+Create database.yml file. You can use sqlite3 db (leave database.yml as it is) or change mysql settings:
   cp config/database.example.yml config/database.yml
 
-Create development.rb file. Left it as it is. I've created mail accout and use it as smtp server (Username: sservice305@gmail.com Password: kuijt93;39):
+Create development.rb file. Leave it as it is. I've created mail accout and use it as smtp server. You can provide other smtp settings.
   cp config/environments/development.example.rb config/environments/development.rb
 
 Run migrations:
